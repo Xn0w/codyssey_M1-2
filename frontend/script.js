@@ -145,5 +145,23 @@ async function loadConversationDetail(id) {
   currentConversationId = id;
 }
 
+// ===== 다크 모드 토글 =====
+const themeToggleBtn = document.getElementById("theme-toggle");
+
+function applyTheme(isDark) {
+  document.body.classList.toggle("dark", isDark);
+  themeToggleBtn.textContent = isDark ? "☀️ 라이트 모드" : "🌙 다크 모드";
+}
+
+// 이전에 선택해둔 테마가 있으면 그대로 복원, 없으면 라이트 모드로 시작
+const savedTheme = localStorage.getItem("theme");
+applyTheme(savedTheme === "dark");
+
+themeToggleBtn.addEventListener("click", () => {
+  const isDark = !document.body.classList.contains("dark");
+  applyTheme(isDark);
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
 // ===== 초기 로딩 =====
 loadSummary();

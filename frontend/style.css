@@ -13,6 +13,33 @@
   --shadow: 0 4px 16px rgba(167, 139, 250, 0.12);
 }
 
+/* 다크 모드: body에 이 클래스가 붙으면 위 변수들을 전부 어두운 톤으로 덮어쓴다 */
+body.dark {
+  --color-bg: #1c1b22;
+  --color-surface: #27252f;
+  --color-primary: #a78bfa;
+  --color-primary-light: #352f4a;
+  --color-accent: #f9a8d4;
+  --color-mint: #99f6e4;
+  --color-text: #e8e6f0;
+  --color-text-soft: #a5a3b0;
+  --color-border: #3a3745;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.theme-toggle-btn {
+  margin-left: auto;
+  background: var(--color-primary-light);
+  color: #7c5fd6;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+body.dark .theme-toggle-btn { color: #d8c8ff; }
+
 * { box-sizing: border-box; font-family: -apple-system, "Apple SD Gothic Neo", sans-serif; }
 body { margin: 0; background: var(--color-bg); color: var(--color-text); }
 
@@ -73,7 +100,7 @@ header h1 {
 }
 .msg.assistant {
   align-self: flex-start;
-  background: linear-gradient(135deg, #f3e5b3, #e0bb6a);
+  background: linear-gradient(135deg, #f3e5b3, #fed7aa);
   border: none;
   color: #1e3a5f;
 }
