@@ -46,6 +46,21 @@ def list_data_items() -> list[dict]:
     docs = db.collection(DATA_COLLECTION).order_by("date").stream()
     return [{"id": doc.id, **doc.to_dict()} for doc in docs]
 
+def get_data_in_range(start_date: str, end_date: str) -> list[dict]:
+    """
+    특정 기간(start_date ~ end_date)의 데이터만 조회.
+    AI가 "특정 날짜/기간의 상세 데이터"가 필요하다고 판단했을 때
+    Function Calling(도구 호출)으로 이 함수를 실행한다.
+    """
+    docs = (
+        db.collection(DATA_COLLECTION)
+        .where("date", ">=", start_date)
+        .where("date", "<=", end_date)
+        .order_by("date")
+        .stream()
+    )
+    return [{"id": doc.id, **doc.to_dict()} for doc in docs]
+
 
 def update_data_item(item_id: str, updates: dict) -> dict:
     """None이 아닌 필드만 골라서 부분 수정."""

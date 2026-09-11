@@ -15,6 +15,9 @@ load_dotenv()
 # OpenAI API 키
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+# 이 줄이 있는지 확인하세요
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")
+
 # Firebase 서비스 계정 키 JSON 파일 경로
 # (Firebase 콘솔 > 프로젝트 설정 > 서비스 계정 > 새 비공개 키 생성으로 받은 파일)
 # Firebase 서비스 계정 키 JSON 파일 경로 (로컬 개발용)

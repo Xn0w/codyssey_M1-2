@@ -1,6 +1,8 @@
 // ===== 설정 =====
 // 배포 시에는 이 값을 Render에서 발급받은 실제 백엔드 주소로 바꿔주세요.
+// const API_BASE = "http://127.0.0.1:8000";
 const API_BASE = "https://codyssey-m1-2-92sp.onrender.com";
+
 
 let currentConversationId = null;
 
