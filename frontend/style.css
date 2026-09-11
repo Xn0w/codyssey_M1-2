@@ -1,0 +1,157 @@
+:root {
+  /* 파스텔 포인트 컬러 팔레트 - 여기 값만 바꾸면 전체 톤이 바뀝니다 */
+  --color-bg: #faf8ff;
+  --color-surface: #ffffff;
+  --color-primary: #a78bfa;      /* 파스텔 보라 (메인 포인트) */
+  --color-primary-light: #ede9fe;
+  --color-accent: #f9a8d4;       /* 파스텔 핑크 (보조 포인트) */
+  --color-mint: #99f6e4;         /* 파스텔 민트 (강조용) */
+  --color-text: #3f3f46;
+  --color-text-soft: #8b8b95;
+  --color-border: #eee7fb;
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(167, 139, 250, 0.12);
+}
+
+* { box-sizing: border-box; font-family: -apple-system, "Apple SD Gothic Neo", sans-serif; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); }
+
+header {
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+header h1 {
+  margin: 0 0 0.9rem;
+  font-size: 1.35rem;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.tabs { display: flex; gap: 0.5rem; }
+.tab-btn {
+  background: var(--color-primary-light);
+  border: 1px solid transparent;
+  color: #7c5fd6;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.tab-btn:hover { transform: translateY(-1px); }
+.tab-btn.active {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.tab-panel { display: none; padding: 1.5rem; max-width: 700px; margin: 0 auto; }
+.tab-panel.active { display: block; }
+
+.summary-box {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.chat-log { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; min-height: 200px; }
+.msg { padding: 0.65rem 1rem; border-radius: var(--radius); max-width: 80%; line-height: 1.5; }
+.msg.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+}
+.msg.assistant {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #f3e5b3, #e0bb6a);
+  border: none;
+  color: #1e3a5f;
+}
+
+.loading { font-size: 0.85rem; color: var(--color-text-soft); margin-bottom: 0.5rem; }
+.hidden { display: none; }
+
+.chat-input-row { display: flex; gap: 0.5rem; }
+.chat-input-row input {
+  flex: 1;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.chat-input-row input:focus { outline: 2px solid var(--color-primary); }
+
+.data-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.data-form input {
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+th {
+  background: var(--color-primary-light);
+  color: #7c5fd6;
+  font-weight: 700;
+}
+th, td { border-bottom: 1px solid var(--color-border); padding: 0.6rem 0.7rem; text-align: left; font-size: 0.9rem; }
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: white;
+  font-weight: 600;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.delete-btn {
+  background: var(--color-surface);
+  color: #e56b9f;
+  border: 1px solid #f9a8d4;
+  padding: 0.35rem 0.8rem;
+}
+
+.conversation-list { list-style: none; padding: 0; }
+.conversation-list li {
+  background: var(--color-surface);
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius);
+  margin-bottom: 0.45rem;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.conversation-list li:hover {
+  border-color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.conversation-detail {
+  margin-top: 1rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--color-border);
+}
