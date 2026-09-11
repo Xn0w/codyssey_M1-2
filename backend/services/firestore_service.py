@@ -6,16 +6,23 @@ Firestore와 실제로 대화하는 코드는 전부 여기 모아둔다.
 이렇게 나눠두면 나중에 DB를 바꾸더라도 라우터 코드는 거의 건드릴 필요가 없다.
 """
 
+import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime, timezone
 
-from config import FIREBASE_CREDENTIALS_PATH
+from config import FIREBASE_CREDENTIALS_PATH, FIREBASE_CREDENTIALS_JSON
 
 # Firebase 앱은 프로세스 전체에서 딱 한 번만 초기화해야 한다.
 # (안 그러면 "app already exists" 에러가 난다)
 if not firebase_admin._apps:
-    cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
+    if FIREBASE_CREDENTIALS_JSON:
+        # 배포 환경(Render 등): 환경변수에 통째로 넣어둔 JSON 문자열을 파싱해서 사용
+        cred_dict = json.loads(FIREBASE_CREDENTIALS_JSON)
+        cred = credentials.Certificate(cred_dict)
+    else:
+        # 로컬 개발 환경: firebase-key.json 파일을 그대로 사용
+        cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()

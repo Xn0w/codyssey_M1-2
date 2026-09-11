@@ -17,7 +17,13 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Firebase 서비스 계정 키 JSON 파일 경로
 # (Firebase 콘솔 > 프로젝트 설정 > 서비스 계정 > 새 비공개 키 생성으로 받은 파일)
+# Firebase 서비스 계정 키 JSON 파일 경로 (로컬 개발용)
 FIREBASE_CREDENTIALS_PATH = os.getenv("FIREBASE_CREDENTIALS_PATH", "firebase-key.json")
+
+# Firebase 서비스 계정 키의 JSON 내용 자체 (배포 환경용).
+# Render 같은 곳은 파일을 업로드할 수 없으니, JSON 파일 전체 내용을 복사해서
+# 이 환경변수 하나에 통째로 붙여넣는 방식을 쓴다. 이 값이 있으면 이 값을 우선 사용한다.
+FIREBASE_CREDENTIALS_JSON = os.getenv("FIREBASE_CREDENTIALS_JSON")
 
 # 프론트엔드 배포 주소 (CORS 허용용). 여러 개면 쉼표로 구분해서 .env에 적는다.
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5500").split(",")
