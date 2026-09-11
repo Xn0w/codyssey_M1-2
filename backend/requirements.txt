@@ -4,3 +4,4 @@ firebase-admin
 openai
 python-dotenv
 pydantic
+mcp[cli]
