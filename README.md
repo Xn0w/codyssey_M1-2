@@ -25,7 +25,7 @@
 cd backend
 python -m venv venv
 source venv/bin/activate        # Windows는 venv\Scripts\activate
-pip install -r requirements.txt
+venv/bin/pip install -r requirements.txt
 cp .env.example .env            # 이후 .env를 실제 값으로 채우기
 uvicorn main:app --reload
 ```
